@@ -24,4 +24,12 @@ router.get('/', async(request, response) => {
   return response.json(ngos);
 });
 
+router.get('/:id', async(request, response) => {
+  const id = request.params.id;
+
+  const ngo = await connection.table('ngos').select('*').where('id', id);
+
+  return response.json(ngo);
+});
+
 module.exports = router
