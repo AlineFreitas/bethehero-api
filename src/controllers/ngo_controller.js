@@ -30,5 +30,19 @@ module.exports = {
     const ngo = await connection.table('ngos').select('*').where('id', id);
   
     return response.json(ngo);
+  },
+
+  async incidents(request, response){
+    const ngo_id = request.headers.authorization;
+    const id = request.params.id;
+
+    if(id !== ngo_id) {
+      return response.status(401).send();
+    }
+
+    const ngo_incidents = await connection('incidents')
+      .where('ngo_id', ngo_id)
+      .select('*');
+    return response.json(ngo_incidents);
   }
 }
