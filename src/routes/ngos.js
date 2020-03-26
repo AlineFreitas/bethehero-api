@@ -7,4 +7,6 @@ router.get('/', ngoController.index);
 
 router.get('/:id', ngoController.show);
 
+router.get('/:id/incidents', ngoController.incidents);
+
 module.exports = router
