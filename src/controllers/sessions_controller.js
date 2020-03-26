@@ -4,7 +4,7 @@ module.exports = {
   async create(request, response){
     const { id } = request.body;
 
-    const ong = connection('ngos')
+    const ong = await connection('ngos')
       .where('id', id)
       .select('name')
       .first();
