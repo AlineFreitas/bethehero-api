@@ -13,5 +13,11 @@ module.exports = {
     });
 
     return response.json( {id} );
+  },
+
+  async index(request, response){
+    const incidents = await connection.table('incidents').select('*');
+
+    return response.json(incidents);
   }
 }
