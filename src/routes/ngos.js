@@ -18,4 +18,10 @@ router.post('/', async(request, response) => {
   return response.json(id);
 });
 
+router.get('/', async(request, response) => {
+  const ngos = await connection.table('ngos').select('*');
+
+  return response.json(ngos);
+});
+
 module.exports = router
