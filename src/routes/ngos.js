@@ -17,6 +17,10 @@ router.get('/', ngoController.index);
 
 router.get('/:id', ngoController.show);
 
-router.get('/:id/incidents', ngoController.incidents);
+router.get('/:id/incidents', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.string().required(),
+  }).unknown()
+}), ngoController.incidents);
 
 module.exports = router
